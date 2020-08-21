@@ -3,8 +3,8 @@ import produce from 'immer';
 import './App.css';
 
 
-const numRows = 25;
-const numCols = 50;
+const numRows = 20;
+const numCols = 40;
 
 const operations = [
   [0, 1],
