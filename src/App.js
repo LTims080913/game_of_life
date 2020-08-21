@@ -1,9 +1,24 @@
 import React, { useState, useCallback, useRef } from 'react';
 import produce from 'immer';
+import styled from 'styled-components';
 import './App.css';
+// import gattika from 'src/gattika.mp4'
+
+//STYLING//
+
+const Button = styled.button `
+background: #C0A9B0;
+border-radius: 3px;
+border: 1px solid #7880B5;
+color: #7880B5;
+margin: 0 1em;
+padding: 0.25em 1em;
+margin-bottom: 2%;
+`
 
 
-const numRows = 20;
+
+const numRows = 15;
 const numCols = 40;
 
 const operations = [
@@ -74,8 +89,10 @@ function App() {
     <>
     
     <div className="App">
-     <h1>This will be my Game of Life</h1>
-    <button onClick={() => {
+     <h1>Welcome to Gattika</h1>
+     <p>Gattika is a simulation of Conway's Game of Life. Begin by placing desired points on the grid or initiating the random button. Once desired formation is in place, press 'Start' to watch the automation ensue!</p>
+    <Button className='button' 
+    onClick={() => {
       setRunning(!running);
       if (!running) {
         runningRef.current = true;
@@ -84,15 +101,15 @@ function App() {
     }}
     >
       {running ? 'stop' : 'start'}
-    </button>
-    <button
+    </Button>
+    <Button className='button'
     onClick={() => {
       setGrid(generateEmptyGrid())
     }}
     >
       clear
-    </button>
-    <button
+    </Button>
+    <Button className='button'
      onClick={() => {
       const rows = [];
       for (let i = 0; i < numRows; i++) {
@@ -103,8 +120,9 @@ function App() {
     }}
     >
       random
-    </button>
-     <div style={{
+    </Button>
+     <div className='grid'
+     style={{
         display:'grid',
         gridTemplateColumns: `repeat(${numCols}, 20px)`
         }}
@@ -122,8 +140,8 @@ function App() {
             style={{
               width:20,
               height: 20,
-              backgroundColor: grid[i][k] ? "pink" : undefined,
-              border: 'solid 1px black'
+              backgroundColor: grid[i][k] ? '#BCC4DB' : '#7880B5',
+              border: 'solid 1px white'
             }}/>
           )))}
        
